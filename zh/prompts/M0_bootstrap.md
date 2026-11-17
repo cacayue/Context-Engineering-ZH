@@ -16,7 +16,7 @@ blocks: M1–M11 全部
 | 项 | 值 |
 |---|---|
 | 仓库根 | `/home/cacayue/Documents/Learning/AI_Engineer/Context-Engineering` |
-| 分支 / commit | `main` / `6158def` |
+| 分支 / commit | `zh/main` / 已含 M0 全部提交（起点 `6158def`） |
 | `origin` | `git@github.com:cacayue/Context-Engineering-ZH.git`（个人 fork） |
 | `upstream` | `https://github.com/jasontang-ai/Context-Engineering.git`（上游，**只读，不要推**） |
 | 工作区现状 | `zh/` 为未跟踪目录，内含 `zh/PLAN/PLAN.md`、`zh/PROGRESS.md`、18 个带 `.gitkeep` 的空目录 |

@@ -505,8 +505,19 @@ B/C 档必须保留原图。图注格式：
 on:
   push:         { paths: ['zh/**'] }
   pull_request: { paths: ['zh/**'] }
-# 不得使用 paths-ignore: '**.md'
+# 不得使用 paths-ignore: '**.md' —— 上游 ci.yml 与 eval.yml 的写法导致文档变更零校验
 ```
+
+5 个 job：`scope`（分支与改动范围守卫）、`manifest`（清单无漂移 + 242/676/30
+基准）、`self-test`（工具自测 + 段数交叉验证）、`checks`（G1–G9 + 术语表同步
++ 数字守卫）、`progress`（PROGRESS.md 与 manifest 同步），共 5 项。
+
+其中两项是防止「静默腐化」的：
+
+| 守卫 | 拦什么 | 为什么需要 |
+|---|---|---|
+| `scope` | `zh/main` 之外的分支；提交触碰 `zh/**` 以外文件 | 改到上游原文会让 `git pull upstream main` 冲突，且译文失去可对照基准 |
+| `digits` | PLAN / PROGRESS / prompts 里的篇数与段数与 `manifest.json` 不一致 | 口径已从 705 改到 676，同一批数字散落在 4 个文件里，手改已漂移 3 次 |
 
 ---
 
@@ -632,6 +643,29 @@ M0 ──┬─▶ M1 ──▶ M2 ──┬─▶ M3 ──▶ M4 ──▶ M5
 | P6 | M10 + M11 | 29 + 0 = 29 | 676 | 研究篇与空目录收尾 |
 
 先「能学」→ 再「能练」→ 后「能查」与「能研」。M8 虽大但不阻塞主线。
+
+### 10.1 分支与推送
+
+中文全量内容留在 **`zh/main`** 隔离分支，不合并进 `main`。
+
+| 项 | 规定 |
+|---|---|
+| 工作分支 | `zh/main`，起点 `6158def`（上游 `main` 的最后一个提交） |
+| 推送目标 | `git push origin zh/main` |
+| `origin` | `git@github.com:cacayue/Context-Engineering-ZH.git`（个人 fork） |
+| `upstream` | `jasontang-ai/Context-Engineering`，**只读** |
+| 合并进 `main` | **不做**。`main` 保持上游原样，便于随时 `git diff main zh/main` 取上游更新 |
+| 提交粒度 | 一个模块一个提交；同模块的正文 + `manifest.json` + `PROGRESS.md` 一起提交 |
+
+理由：`zh/main` 是纯增量分支，上游 242 篇原文一字未改。若合并进 `main`，
+后续 `git pull upstream main` 会在每个译文路径上与上游冲突，且无法再用
+「只改 `zh/**`」这条规则做 CI 过滤。
+
+禁止事项：
+
+- 不向 `upstream` 推送（无权限，且不应改动原项目）。
+- 不在 `zh/main` 上修改任何 `zh/` 之外的文件（`zh_checks.yml` 除外，它已在 M0 落地）。
+- 不开 pull request 到上游。这是个人学习分支，不是贡献。
 
 ---
 

@@ -7,16 +7,16 @@
 | 任务卡 | 模块 | 篇 | 段 | 依赖 | 状态 |
 |---|---|---:|---:|---|---|
 | `M0_bootstrap.md` | M0 基础设施 | 0 | 0 | 无 | **ready** |
-| `M1_entry.md` | M1 入口层 | 23 | 43 | M0 | 待写 |
+| `M1_entry.md` | M1 入口层 | 23 | 40 | M0 | 待写 |
 | `M2_foundations.md` | M2 概念地基 | 7 | 11 | M0 | 待写 |
-| `M3_course_core.md` | M3 课程基础 | 27 | 80 | M0 | 待写 |
+| `M3_course_core.md` | M3 课程基础 | 27 | 79 | M0 | 待写 |
 | `M4_course_adv.md` | M4 课程进阶 | 17 | 35 | M0 | 待写 |
 | `M5_course_frontier.md` | M5 课程前沿 | 17 | 52 | M0 | 待写 |
-| `M6_assets.md` | M6 工程资产 | 63 | 90 | M0 | 待写 |
+| `M6_assets.md` | M6 工程资产 | 63 | 89 | M0 | 待写 |
 | `M7_reference.md` | M7 参考手册 | 13 | 104 | M0 | 待写 |
 | `M8_nocode.md` | M8 无代码 | 32 | 204 | M0 + M2 术语冻结 | 待写 |
-| `M9_cognitive.md` | M9 认知架构 | 25 | 35 | M0 | 待写 |
-| `M10_research.md` | M10 研究篇 | 14 | 51 | M0 | 待写 |
+| `M9_cognitive.md` | M9 认知架构 | 25 | 33 | M0 | 待写 |
+| `M10_research.md` | M10 研究篇 | 14 | 29 | M0 | 待写 |
 | `M11_write.md` | M11 空目录写作 | 4 | 0 | M0 | 待写 |
 
 ## 启动顺序
@@ -44,7 +44,7 @@ M2 译完即冻结术语，M8 复用同一译法，否则两处必然分叉。
 写后续任务卡时照抄这 12 节，保证 agent 拿到的是同一套契约：
 
 ```
-0 你的处境        仓库根 / 分支 / remote / 工作区现状 / Python 版本
+0 你的处境        仓库根 / 分支（固定 zh/main）/ remote / 工作区现状 / Python 版本
 1 先读哪几份文件  PLAN.md 章节号 + PROGRESS.md §2 的对应行
 2 交付物          本模块的 N 个 zh/ 文件路径
 3 关键数字        篇数 / 段数 / 空文件数 / 可译字节
@@ -57,6 +57,21 @@ M2 译完即冻结术语，M8 复用同一译法，否则两处必然分叉。
 10 报告格式       表格 + 偏差 + 下一步
 11 建议顺序       分步执行顺序
 ```
+
+## 分支约定（每张卡都必须写明）
+
+所有译文提交到 **`zh/main`**，不合并进 `main`，不推 `upstream`。任务卡 §0 照抄这几行：
+
+```
+| 分支 | zh/main（不要切到 main，不要开 PR） |
+| 推送 | git push origin zh/main |
+| 禁止 | 推 upstream；改 zh/ 之外的文件；git checkout 其它分支 |
+```
+
+CI 有一条守卫：`zh/main` 上的提交若触碰 `zh/**` 与 `.github/workflows/zh_checks.yml`
+之外的文件，`scope` job 直接失败。这条守卫存在的意义是防止 agent 顺手「修正」
+上游原文——那会让后续 `git pull upstream main` 产生冲突，也会让译文与原文的
+对应关系失去基准。
 
 ## 各模块已知的坑（写任务卡时直接抄进 §6）
 
