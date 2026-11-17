@@ -1,0 +1,479 @@
+# zh/GLOSSARY.yaml —— 术语表（机器可读，CI 与 AI 共用）
+#
+# 字段：
+#   en          英文原文（必填，匹配时大小写不敏感、按词边界）
+#   zh          规范译法（必填，G1 检查"规范译法出现"的依据）
+#   scope       适用范围（必填，固定 doc）
+#   first_use   首次出现写法（可选，遵守 R6「中文（English）」）
+#   forbid      禁用译法列表（可选，G1 在散文区命中即 FAIL）
+#   ambiguity   一词多义的消歧规则（可选，列表；每项 mean/zh）
+#   note        补充说明（可选）
+#
+# G1 只扫描散文区（代码块与 ASCII 图块除外）。
+
+# ─── 核心概念 ────────────────────────────────────────────────────────────
+
+- en: Context Engineering
+  zh: 上下文工程
+  first_use: 上下文工程（Context Engineering）
+  forbid: [语境工程, 情景工程]
+  scope: doc
+  note: 全书标题级术语，不得译为「提示工程」
+
+- en: context
+  zh: 上下文
+  forbid: [语境, 情景, 脉络, 上下文环境]
+  scope: doc
+
+- en: context window
+  zh: 上下文窗口
+  forbid: [上下文视窗, 语境窗口]
+  scope: doc
+
+- en: context management
+  zh: 上下文管理
+  scope: doc
+
+- en: context processing
+  zh: 上下文处理
+  scope: doc
+
+- en: context assembly
+  zh: 上下文装配
+  forbid: [上下文组装, 上下文拼装]
+  scope: doc
+
+- en: context engineering
+  zh: 上下文工程
+  scope: doc
+
+- en: prompt
+  zh: 提示词
+  forbid: [提示语, 提示信息]
+  scope: doc
+  note: 作为独立名词一律「提示词」；"prompting" 译「提示」
+
+- en: prompt engineering
+  zh: 提示词工程
+  forbid: [提示工程, 提示词设计工程]
+  scope: doc
+
+- en: prompt programming
+  zh: 提示词编程
+  forbid: [提示编程]
+  scope: doc
+  first_use: 提示词编程（prompt programming）
+
+- en: token
+  zh: 词元
+  first_use: 词元（token）
+  forbid: [令牌]
+  scope: doc
+  note: 度量单位处保留 token 亦可，但首现必须给中文
+
+- en: token budget
+  zh: 词元预算
+  forbid: [令牌预算, token 预算]
+  scope: doc
+
+- en: embedding
+  zh: 嵌入
+  forbid: [向量嵌入]
+  scope: doc
+  note: 名词「embedding vector」译「嵌入向量」
+
+- en: retrieval
+  zh: 检索
+  forbid: [召回]
+  scope: doc
+
+- en: Retrieval-Augmented Generation
+  zh: 检索增强生成
+  first_use: 检索增强生成（RAG）
+  forbid: [检索增强式生成, 检索辅助生成]
+  scope: doc
+
+- en: RAG
+  zh: RAG
+  scope: doc
+  note: 缩写保留不译
+
+- en: chunk
+  zh: 片段
+  forbid: [分块, 切片]
+  scope: doc
+  note: 本仓库的「段」（chunk 注释里的 chunk）指翻译分段，不译「片段」；
+        文档内容切分语境译「片段」
+
+- en: reranking
+  zh: 重排序
+  forbid: [再排序]
+  scope: doc
+
+- en: vector store
+  zh: 向量库
+  forbid: [向量存储, 矢量库]
+  scope: doc
+
+- en: knowledge graph
+  zh: 知识图谱
+  scope: doc
+
+- en: schema
+  zh: 模式
+  forbid: [结构体, 架构图]
+  scope: doc
+  note: JSON Schema 等专名保留 schema 不译
+
+- en: template
+  zh: 模板
+  forbid: [范本, 样板]
+  scope: doc
+
+# ─── 记忆与认知层级 ──────────────────────────────────────────────────────
+
+- en: memory
+  zh: 记忆
+  scope: doc
+  forbid: [内存]
+  ambiguity:
+    - mean: 记忆系统 / 记忆机制（正文）
+      zh: 记忆
+    - mean: 程序变量或代码中的 memory
+      zh: memory
+  note: 正文一律「记忆」；代码标识符、YAML/JSON key 保留 memory
+
+- en: working memory
+  zh: 工作记忆
+  scope: doc
+
+- en: long-term memory
+  zh: 长期记忆
+  scope: doc
+
+- en: semantic memory
+  zh: 语义记忆
+  scope: doc
+
+- en: episodic memory
+  zh: 情景记忆
+  scope: doc
+
+- en: memory hierarchy
+  zh: 记忆层级
+  forbid: [记忆层次]
+  scope: doc
+
+- en: atom
+  zh: 原子
+  first_use: 原子（atom）
+  scope: doc
+
+- en: molecule
+  zh: 分子
+  first_use: 分子（molecule）
+  scope: doc
+
+- en: cell
+  zh: 细胞
+  first_use: 细胞（cell）
+  scope: doc
+
+- en: organ
+  zh: 器官
+  first_use: 器官（organ）
+  scope: doc
+
+# ─── 智能体与工具 ────────────────────────────────────────────────────────
+
+- en: agent
+  zh: 智能体
+  forbid: [代理, 代理人, 经纪]
+  scope: doc
+  ambiguity:
+    - mean: 智能体（通用角色）
+      zh: 智能体
+    - mean: .agent.md 提示词文件名
+      zh: .agent.md（保留文件名不译）
+  note: 文件名、目录名中的 agent 保留原文
+
+- en: multi-agent
+  zh: 多智能体
+  forbid: [多代理, 多主体]
+  scope: doc
+
+- en: agentic
+  zh: 智能体式的
+  forbid: [代理式]
+  scope: doc
+
+- en: tool use
+  zh: 工具使用
+  scope: doc
+
+- en: function calling
+  zh: 函数调用
+  scope: doc
+
+- en: orchestration
+  zh: 编排
+  forbid: [协奏, 管弦]
+  scope: doc
+
+- en: orchestrator
+  zh: 编排器
+  scope: doc
+
+- en: protocol
+  zh: 协议
+  scope: doc
+  forbid: [协议规范]
+  ambiguity:
+    - mean: 协议壳规范（.shell.md 中的行为约定）
+      zh: 协议
+    - mean: 通信协议 / 网络协议
+      zh: 协议
+  note: 两者中文同形，按上下文补限定语（「协议壳」「通信协议」）区分
+
+- en: shell
+  zh: 协议壳
+  scope: doc
+  forbid: [外壳, 壳层]
+  ambiguity:
+    - mean: 协议壳（.shell.md 的可复用行为模板）
+      zh: 协议壳
+    - mean: bash / 命令行 shell
+      zh: shell（保留）
+  note: 命令、代码、CLI 语境保留 shell 原词
+
+- en: schema field
+  zh: 字段
+  scope: doc
+
+- en: resonance
+  zh: 共振
+  forbid: [共鸣, 谐振]
+  scope: doc
+
+- en: resonance scaffold
+  zh: 共振支架
+  forbid: [共振脚手架]
+  scope: doc
+
+# ─── 场论与涌现 ──────────────────────────────────────────────────────────
+
+- en: field
+  zh: 场
+  scope: doc
+  forbid: [字段域]
+  ambiguity:
+    - mean: 神经场 / 语义场 / 场论（正文）
+      zh: 场
+    - mean: 数据字段（YAML / JSON key）
+      zh: field（保留）
+  note: M2 与 M10 统一用「场」；配置与 schema 内保留 field
+
+- en: semantic field
+  zh: 语义场
+  scope: doc
+
+- en: neural field
+  zh: 神经场
+  scope: doc
+
+- en: unified field theory
+  zh: 统一场论
+  scope: doc
+
+- en: field orchestration
+  zh: 场编排
+  scope: doc
+
+- en: attractor
+  zh: 吸引子
+  forbid: [吸引点, 吸引力点]
+  scope: doc
+
+- en: attractor dynamics
+  zh: 吸引子动力学
+  scope: doc
+
+- en: emergence
+  zh: 涌现
+  forbid: [突现]
+  scope: doc
+
+- en: emergent
+  zh: 涌现的
+  forbid: [突现的]
+  scope: doc
+
+- en: residue
+  zh: 残差
+  scope: doc
+  forbid: [残余, 残留物]
+  ambiguity:
+    - mean: 符号残差（符号机制遗留的语义痕迹）
+      zh: 残差
+    - mean: 代码残留 / 未清理的死代码
+      zh: 残留
+  note: 与 symbolic / semantic 连用时译「残差」；与 code / dead 连用时译「残留」
+
+- en: symbolic residue
+  zh: 符号残差
+  scope: doc
+
+- en: coherence
+  zh: 连贯性
+  forbid: [连贯度]
+  scope: doc
+  note: 物理语境（quantum coherence）译「相干性」
+
+- en: resonance field
+  zh: 共振场
+  scope: doc
+
+# ─── 模式与递归 ──────────────────────────────────────────────────────────
+
+- en: pattern
+  zh: 模式
+  scope: doc
+  forbid: [样式, 图案]
+  ambiguity:
+    - mean: 设计模式 / 行为模式（正文）
+      zh: 模式
+    - mean: 正则模式 / 匹配模式（regex）
+      zh: 模式
+  note: 二者中文同形；正则语境可写「正则模式」明确
+
+- en: cognitive pattern
+  zh: 认知模式
+  scope: doc
+
+- en: recursive
+  zh: 递归
+  forbid: [递归式]
+  scope: doc
+
+- en: recursion
+  zh: 递归
+  scope: doc
+
+- en: meta-recursive
+  zh: 元递归
+  forbid: [超递归, 元递归式]
+  scope: doc
+
+- en: self-repair
+  zh: 自修复
+  forbid: [自我修复, 自愈合]
+  scope: doc
+
+# ─── 学习范式 ────────────────────────────────────────────────────────────
+
+- en: chain of thought
+  zh: 思维链
+  first_use: 思维链（chain of thought）
+  forbid: [思考链, 思维链条, 思路链]
+  scope: doc
+
+- en: few-shot
+  zh: 少样本
+  forbid: [少量样本, 小样本, few shot]
+  scope: doc
+
+- en: zero-shot
+  zh: 零样本
+  forbid: [无样本, 零示例]
+  scope: doc
+
+- en: in-context learning
+  zh: 上下文学习
+  forbid: [语境学习, 情境学习]
+  scope: doc
+
+- en: latent space
+  zh: 潜空间
+  forbid: [隐空间, 潜在空间]
+  scope: doc
+
+- en: attention
+  zh: 注意力
+  forbid: [关注度, 注意机制]
+  scope: doc
+
+- en: quantization
+  zh: 量化
+  scope: doc
+
+- en: distillation
+  zh: 蒸馏
+  scope: doc
+
+# ─── 质量与运维 ──────────────────────────────────────────────────────────
+
+- en: evaluation
+  zh: 评估
+  forbid: [评测, 评价]
+  scope: doc
+
+- en: benchmark
+  zh: 基准测试
+  forbid: [跑分]
+  scope: doc
+
+- en: grounding
+  zh: 落地依据
+  forbid: [接地, 基础化, 扎根]
+  scope: doc
+  note: "grounded in" 译「以……为依据」
+
+- en: hallucination
+  zh: 幻觉
+  forbid: [臆造, 幻象]
+  scope: doc
+
+- en: guardrail
+  zh: 护栏
+  forbid: [防护栏, 护栏机制]
+  scope: doc
+
+- en: observability
+  zh: 可观测性
+  forbid: [可观察性]
+  scope: doc
+
+- en: trace
+  zh: 轨迹
+  forbid: [跟踪记录]
+  scope: doc
+  note: 动词 "trace" 译「追踪」；名词（执行记录）译「轨迹」
+
+- en: feedback loop
+  zh: 反馈回路
+  forbid: [反馈环, 反馈循环]
+  scope: doc
+
+- en: compression
+  zh: 压缩
+  scope: doc
+
+- en: summarization
+  zh: 摘要
+  forbid: [概括]
+  scope: doc
+  note: 动作译「生成摘要」
+
+- en: boundary operation
+  zh: 边界操作
+  forbid: [边界运算]
+  scope: doc
+
+- en: cognitive tool
+  zh: 认知工具
+  scope: doc
+
+- en: Socratic question
+  zh: 苏格拉底式提问
+  forbid: [苏格拉底问题]
+  scope: doc
