@@ -1,13 +1,13 @@
 {
   "base_commit": "6158def",
-  "generated_at": "2026-11-17T08:35:20Z",
+  "generated_at": "2026-11-17T12:41:44Z",
   "chunk_bytes": 6144,
   "totals": {
     "files": 242,
     "chunks": 676,
-    "chunks_done": 217,
+    "chunks_done": 306,
     "authored": 30,
-    "published": 79
+    "published": 140
   },
   "files": [
     {
@@ -19,8 +19,11 @@
       "source_sha256": "e2bf151fff6c1a7194c2997ff4757e24fd1454f994b8d16cadfc0768633b5982",
       "todo_bytes": 8091,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -32,8 +35,10 @@
       "source_sha256": "fe725377663e65d46a769be8ea91b93059927c06a2b8c9a7b7e3f7a0f317dd6f",
       "todo_bytes": 534,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -45,8 +50,10 @@
       "source_sha256": "b98e6d56f68fc718e123fc3e7a831b9bca2138bec2c3a08dc2cedeefa8efc6c7",
       "todo_bytes": 524,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -58,8 +65,10 @@
       "source_sha256": "f64c245cc88a5707491efd2844990a0288756fc0edd73efd16562efb42f2fead",
       "todo_bytes": 653,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -71,8 +80,10 @@
       "source_sha256": "d2cd136187483cdec2b57107c484cfb6e1e271d56e5f8d1cc1d884f757c3d9e8",
       "todo_bytes": 517,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -84,8 +95,10 @@
       "source_sha256": "da214113b5539d66bd6d0120bbfff0a11fec02256a96667e1a8363b6c0bb9fc5",
       "todo_bytes": 498,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -97,8 +110,10 @@
       "source_sha256": "1eb7a769666bdcd1c83fa2460b1839692aa79ab6cf7a24450a76cc942307b53a",
       "todo_bytes": 530,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -110,8 +125,10 @@
       "source_sha256": "cde5f99d5f97bbf0cf082cafd66bdd651286b9864f8d8448e97735fbf023f1cd",
       "todo_bytes": 524,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -123,8 +140,10 @@
       "source_sha256": "8fe75b113cd50aa54816b4bab3a1375becd4322a67b4f8856641430580c46129",
       "todo_bytes": 495,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -136,8 +155,10 @@
       "source_sha256": "56f87a01b6cdb594490008a78c1a3354fd07f91cf69c2fb128f23b8e8c3b5e3c",
       "todo_bytes": 520,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -149,8 +170,10 @@
       "source_sha256": "ed05cddc44871c82e3f42f288a0e50ab2b9915f9a46a67213b92b9489abc67ac",
       "todo_bytes": 515,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -162,8 +185,10 @@
       "source_sha256": "03302a62afc3e4b1b8b0d5bc93bdd0b51eb990e1e981aac0762014c8c14a36f8",
       "todo_bytes": 718,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -175,8 +200,10 @@
       "source_sha256": "16320dd3cbd0d59da219bac002a9e33281fd247ce8366c259ca131684da7d6e4",
       "todo_bytes": 534,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -188,8 +215,10 @@
       "source_sha256": "01c94f3b607037415d7f8198957ce204b3cbbda537a18da1bf70ecef8a669bbc",
       "todo_bytes": 540,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -201,8 +230,10 @@
       "source_sha256": "43152686452b94011a41223ddae9f0a202c80f50efc2cc616343c2b30ebee2a1",
       "todo_bytes": 546,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -214,8 +245,10 @@
       "source_sha256": "3e7ea4cbcd91a4ee097fe6e698b782cf3af6dc658e246139962e105e4ddab61b",
       "todo_bytes": 521,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -227,8 +260,10 @@
       "source_sha256": "89caf469b0a5a02b99011714b53c056eff6a2fdf534a0c8b8e625c643be6dd63",
       "todo_bytes": 702,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1519,8 +1554,10 @@
       "source_sha256": "958fab97ccbbad3f6909f527f7f591cb24fc2ae4283b7eeea93345a149d4aee1",
       "todo_bytes": 5604,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1532,8 +1569,10 @@
       "source_sha256": "8c57893428a205a38494c1885806f6684469a2b38a5616af0bb350377b61f778",
       "todo_bytes": 6127,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1545,8 +1584,10 @@
       "source_sha256": "533d3e5934c5ac474c6267c03d91c9371a297fa6fb9c2895352353464a1a4654",
       "todo_bytes": 929,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1558,8 +1599,11 @@
       "source_sha256": "ce929f04a17c6857084ebae55a53135b2ec5d79b84804eca65823946299e650a",
       "todo_bytes": 8226,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1571,8 +1615,10 @@
       "source_sha256": "ba06173f85977d5690fbfbab5d642c67cf1cbf0c04079d46f27dea2d78bdb8e2",
       "todo_bytes": 5660,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1584,8 +1630,10 @@
       "source_sha256": "50cb84ce5f2e3bb5e26ecef2044d487400b4045f1b282167aabe8bc1cb7c55e0",
       "todo_bytes": 1231,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1597,8 +1645,10 @@
       "source_sha256": "a24c2417cfb923cb131d4bd722491ec8a5be13fa521ac5105d0db5b9874421ae",
       "todo_bytes": 1072,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1610,8 +1660,10 @@
       "source_sha256": "d56ec0daba2073cd7c42ffd75bf42e8d242f945151a808d489e3dc555a33c7f3",
       "todo_bytes": 1196,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1623,8 +1675,10 @@
       "source_sha256": "46c8a26077d80fc9563bb26620e2bab38c4bddfab62ec9e6fc64d62e0d44d381",
       "todo_bytes": 1673,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1636,8 +1690,17 @@
       "source_sha256": "98985cca0ea8359b12157a3f402d122eefc63b37dd103e243ff679b42ba3b720",
       "todo_bytes": 48100,
       "chunks": 8,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1649,8 +1712,10 @@
       "source_sha256": "fb21e5b41c4390d2c650b6f2920fb8dfe1182e2f310715409ac90e3080fcb2b3",
       "todo_bytes": 4711,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1662,8 +1727,10 @@
       "source_sha256": "f6b322ca70517613a7974ab71fb3c7c9677bf189691799ff0c252e9caadfe000",
       "todo_bytes": 1652,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1675,8 +1742,10 @@
       "source_sha256": "2085ee4e5653dafeb982cad84d72d6379b2971a42d40ee36c65cac028089b394",
       "todo_bytes": 4515,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1688,8 +1757,10 @@
       "source_sha256": "94742865c75c7d4c1f3acfddc74e51aaf5a74ce5b8516a9b054e80eb8f29ecf2",
       "todo_bytes": 3537,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1701,8 +1772,10 @@
       "source_sha256": "7d3659279d783fac2d79caa750a53eee018d9d314ba1c6522a24aeadc7672e27",
       "todo_bytes": 667,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1714,8 +1787,10 @@
       "source_sha256": "d91616295329288f7c8015ee942ea9df4f3a0279d5bfbbde136295e39ef8d4fd",
       "todo_bytes": 998,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1727,8 +1802,10 @@
       "source_sha256": "15f43f806f9bb9f2bf10812386e15b3f9bf5639538d7475a26fab96c22b5e53b",
       "todo_bytes": 848,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1740,8 +1817,10 @@
       "source_sha256": "c882cd2a15a41a23033029b8650ddda2e0988480a13afb85a8998ac0e5529cd0",
       "todo_bytes": 6079,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1753,8 +1832,10 @@
       "source_sha256": "c5597c1c7b99198777f0bbc539b595a83ecb6eafb8a8ff1fd44ab2f42c2fedc9",
       "todo_bytes": 1246,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1766,8 +1847,10 @@
       "source_sha256": "b759709b84f0bc1422c7857bb9af8ec1cba2c56255aa6258f51de5aac03b4376",
       "todo_bytes": 662,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1779,8 +1862,10 @@
       "source_sha256": "9479f07726ae89b7a21ee16652413dbb76f111fec0269e5110455a12e1564df5",
       "todo_bytes": 2105,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1792,8 +1877,10 @@
       "source_sha256": "6a3357d35d61157f456648dd074969aab9de357df90a67ca91467ee55673f1b0",
       "todo_bytes": 1071,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1805,8 +1892,10 @@
       "source_sha256": "f6e5c5c72596ad6a334bbe86357625b58061ebbf1e5ef3ac7ecaf37da00dbce2",
       "todo_bytes": 5267,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1818,8 +1907,10 @@
       "source_sha256": "3f23cb4e8754afb96a2c9fc5b805ed02e4b1d41f47ad45f1d82d16853f889014",
       "todo_bytes": 773,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1831,8 +1922,11 @@
       "source_sha256": "ab20c835d5e3d32c4cbe2f22cc150f5f447cc2562cbfcb7dd763be40f5bc27de",
       "todo_bytes": 7821,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1844,8 +1938,10 @@
       "source_sha256": "cafe7440443c6837d3cee1bc1cca1386606793c0f167d5248ddee7464936f8a3",
       "todo_bytes": 1273,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1857,8 +1953,11 @@
       "source_sha256": "9eb9c62099cc9565f3903938ee031a599ff385f933ee83872b3a39f90fdef478",
       "todo_bytes": 8132,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1870,8 +1969,10 @@
       "source_sha256": "b5f982b84d89770624ea17a26bab40d59ede8dc3dcc3a3c1c07f03456ad45233",
       "todo_bytes": 5863,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1883,8 +1984,10 @@
       "source_sha256": "a192da1cdc659ea343bc93ca9251149a37f275401170e9ca4164f01c162a12b7",
       "todo_bytes": 1967,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1896,8 +1999,10 @@
       "source_sha256": "3abe6191030d5983cc891fdf9f9219e2ac00d610dcec5b1d817abbfb6a9195fe",
       "todo_bytes": 3132,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1909,8 +2014,10 @@
       "source_sha256": "f4ff48b1110795f377b46635d8589e0d24aff64d7f82265bc5854395fec3da0b",
       "todo_bytes": 5221,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1922,8 +2029,10 @@
       "source_sha256": "1e65c6021fd8d50552a9ea889ac3ecf3ec11eee41a69a47ca6165340e483170a",
       "todo_bytes": 3053,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1935,8 +2044,10 @@
       "source_sha256": "0da4366dd628c4f61e9bc24d438e4fdc5611148245cd535d287ef8e053c47e53",
       "todo_bytes": 5333,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1948,8 +2059,10 @@
       "source_sha256": "e35fc4b1883d4047d02c7599daefa426cac43b333e0b8d58845b8b4e20dbfd9b",
       "todo_bytes": 1622,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -2158,8 +2271,11 @@
       "source_sha256": "774c556498372eed1e946bc5df9a2e920ad4ae250fed28f69a04045902d0f465",
       "todo_bytes": 7318,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -2171,8 +2287,10 @@
       "source_sha256": "d23918f2ae43fe50fcb9e35e76ab6268e904e352cc287f702ce4474b0ccd9afb",
       "todo_bytes": 3902,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -2184,8 +2302,10 @@
       "source_sha256": "7821735dce63d7776ee530f56f3a0389fb05402d58779d7a9a59f4356d60a4b0",
       "todo_bytes": 4089,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -2223,8 +2343,13 @@
       "source_sha256": "98ff273152f47996af2b8bc1918365ca62aaafe6e8551bf988673fe81294adfb",
       "todo_bytes": 19404,
       "chunks": 4,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -2236,8 +2361,11 @@
       "source_sha256": "10c8eb0ec0c3ebdc835c5f0981f6845d880f4e885effa0da2dfab7475aea893b",
       "todo_bytes": 7248,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -2249,8 +2377,13 @@
       "source_sha256": "24908bcae1ce9351a635fea1c98a089a34889100588287e2a05597321f2b60eb",
       "todo_bytes": 19700,
       "chunks": 4,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -2262,8 +2395,13 @@
       "source_sha256": "09e0855bd36e06cf0d4d94af87f39aa51ddab8d17dc9ab725fb8e60e4f05c3ad",
       "todo_bytes": 19795,
       "chunks": 4,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -2275,8 +2413,11 @@
       "source_sha256": "24b194fcca30c6ec07d5a4c1ab502f4bf6e72eb61ffac264152207aad8659495",
       "todo_bytes": 11678,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -2288,8 +2429,12 @@
       "source_sha256": "b6d5e8d6ef1c80aa64a29481b1597dcc287464cec6705f07b5a5b050e4b107b3",
       "todo_bytes": 17817,
       "chunks": 3,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2,
+        3
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -2301,8 +2446,13 @@
       "source_sha256": "a7c40139644198b3d55eb86f5ddc8b08e67792e865fb2e4db2415c990f243033",
       "todo_bytes": 18456,
       "chunks": 4,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "published",
       "authored": false
     },
     {
