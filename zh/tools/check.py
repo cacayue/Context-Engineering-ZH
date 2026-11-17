@@ -227,12 +227,21 @@ def check_g4(ctx, **_):
 # ─── G5 内部链接 ──────────────────────────────────────────────────────────
 
 
-def check_g5(ctx, whitelist=None, **_):
-    """相对链接目标存在；已知失效走白名单。"""
+def check_g5(ctx, whitelist=None, strict=False, **_):
+    """相对链接目标存在；已知失效走白名单；指向未译文件的算 pending。
+
+    三种状态必须分开，否则要么逼译者删链接，要么放过真正写错的路径：
+
+    - 可达                     → 通过
+    - 指向 zh/ 内尚不存在的路径，但上游源文件存在 → `pending`（该模块还没译）
+    - 以上都不是               → 真失效，FAIL
+
+    `strict=True`（`--strict-links`）把 pending 也算 FAIL，用于全库译完后的终检。
+    """
     whitelist = whitelist or set()
     text = body_without_fm(ctx.target_text)
     base = os.path.dirname(ctx.abs_target)
-    bad, known = [], 0
+    bad, pending, known = [], [], 0
     for m in LINK_RE.finditer(text):
         href = m.group(1)
         if re.match(r"^[a-zA-Z][\w+.-]*:", href) or href.startswith("#"):
@@ -248,12 +257,33 @@ def check_g5(ctx, whitelist=None, **_):
         if href in whitelist or target in whitelist:
             known += 1
             continue
-        line = text[: m.start()].count("\n") + 1
-        bad.append((line, href))
+
+        # 译文缺失但源文件在 → 该模块尚未翻译，链接本身没写错
+        zh_root = os.path.normpath(os.path.join(ctx.repo, "zh"))
+        rel = os.path.relpath(dest, zh_root)
+        src_guess = None
+        if not rel.startswith(".."):
+            src_guess = os.path.join(ctx.repo, rel)
+        if src_guess and os.path.exists(src_guess):
+            pending.append((text[: m.start()].count("\n") + 1, href))
+            continue
+
+        bad.append((text[: m.start()].count("\n") + 1, href))
+
     if bad:
         line, href = sorted(bad)[0]
         return FAIL, ctx.fmt(line, "链接失效：%s（共 %d 处）" % (href, len(bad)))
-    note = "链接全部可达" + ("（白名单 %d 处）" % known if known else "")
+    if pending and strict:
+        line, href = sorted(pending)[0]
+        return FAIL, ctx.fmt(
+            line, "链接指向未译文件：%s（共 %d 处，--strict-links 下计为失败）" % (href, len(pending))
+        )
+    bits = []
+    if known:
+        bits.append("白名单 %d 处" % known)
+    if pending:
+        bits.append("待译 %d 处" % len(pending))
+    note = "链接全部可达" + ("（" + "，".join(bits) + "）" if bits else "")
     return PASS, note
 
 
@@ -403,7 +433,7 @@ CHECK_FUNCS = {
 # ─── 驱动 ────────────────────────────────────────────────────────────────
 
 
-def run_one(ctx, checks, glossary, whitelist):
+def run_one(ctx, checks, glossary, whitelist, strict=False):
     results = {}
     for gid in checks:
         fn = CHECK_FUNCS[gid]
@@ -412,6 +442,7 @@ def run_one(ctx, checks, glossary, whitelist):
             kwargs["glossary"] = glossary
         if gid == "G5":
             kwargs["whitelist"] = whitelist
+            kwargs["strict"] = strict
         try:
             results[gid] = fn(ctx, **kwargs)
         except Exception as exc:  # 单项异常不应拖垮整体
@@ -447,7 +478,7 @@ def read_text(path):
         return fh.read()
 
 
-def run_checks(pairs, checks, title=None):
+def run_checks(pairs, checks, title=None, strict=False):
     glossary = load_glossary()
     whitelist = load_known_links()
     agg = {g: (PASS, "全部通过", 0) for g in checks}  # (status, msg, failcount)
@@ -460,7 +491,7 @@ def run_checks(pairs, checks, title=None):
             continue
         checked += 1
         ctx = Ctx(target, read_text(tpath), source, read_text(spath))
-        res = run_one(ctx, checks, glossary, whitelist)
+        res = run_one(ctx, checks, glossary, whitelist, strict)
         for g, (st, msg) in res.items():
             cur_st, cur_msg, cnt = agg[g]
             if st == FAIL:
@@ -638,6 +669,11 @@ def main(argv=None):
     ap.add_argument("--all", action="store_true", help="检查全部译文")
     ap.add_argument("--only", metavar="G2,G4", help="只跑指定检查")
     ap.add_argument("--self-test", action="store_true", help="内置正反样例自检九项检查")
+    ap.add_argument(
+        "--strict-links",
+        action="store_true",
+        help="G5 把「指向未译文件」也计为失败（全库译完后的终检用）",
+    )
     args = ap.parse_args(argv)
 
     if args.self_test:
@@ -669,7 +705,7 @@ def main(argv=None):
         # 无参数：等同 --all
         pairs = collect_targets(None, only_all=True)
 
-    return run_checks(pairs, checks)
+    return run_checks(pairs, checks, strict=args.strict_links)
 
 
 if __name__ == "__main__":
