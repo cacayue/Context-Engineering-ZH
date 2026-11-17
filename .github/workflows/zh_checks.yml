@@ -1,0 +1,118 @@
+name: zh checks
+
+# 只监听 zh/**。上游 ci.yml / eval.yml 用「排除所有 Markdown」的写法，
+# 导致所有文档变更零校验——这正是本工作流要修的。
+# 严禁在此添加任何路径排除（paths 排除）条目。
+
+on:
+  push:
+    paths:
+      - 'zh/**'
+      - '.github/workflows/zh_checks.yml'
+  pull_request:
+    paths:
+      - 'zh/**'
+      - '.github/workflows/zh_checks.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  manifest:
+    name: manifest 一致性
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 校验 manifest.json 与源文件无漂移
+        run: python zh/tools/manifest.py --check
+      - name: 校验数字基准（242 篇 / 676 段 / 30 空）
+        run: |
+          python - <<'PY'
+          import json, sys
+          d = json.load(open("zh/manifest.json", encoding="utf-8"))
+          t = d["totals"]
+          expect = {"files": 242, "chunks": 676, "authored": 30}
+          bad = {k: (t.get(k), v) for k, v in expect.items() if t.get(k) != v}
+          print("totals:", t)
+          if bad:
+              print("数字基准不一致（实际, 期望）:", bad, file=sys.stderr)
+              sys.exit(1)
+          print("数字基准一致")
+          PY
+
+  self-test:
+    name: 工具自测
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: check.py --self-test（必须 9/9）
+        run: python zh/tools/check.py --self-test
+      - name: assemble.py --self-test（往返无损）
+        run: python zh/tools/assemble.py --self-test
+      - name: plan_chunks.py 段数与 manifest 交叉验证
+        run: |
+          python - <<'PY'
+          import json, subprocess, sys
+          d = json.load(open("zh/manifest.json", encoding="utf-8"))
+          files = [e["source"] for e in d["files"] if e["chunks"] > 0]
+          rc = 0
+          for src in files:
+              out = subprocess.run(
+                  [sys.executable, "zh/tools/plan_chunks.py", src, "--json"],
+                  capture_output=True, text=True,
+              )
+              if out.returncode != 0:
+                  print("plan_chunks 失败:", src, out.stderr, file=sys.stderr)
+                  rc = 1
+                  continue
+              got = json.loads(out.stdout)
+              if got["chunks"] != got["manifest_chunks"]:
+                  print("段数不一致:", src, got["chunks"], "≠", got["manifest_chunks"], file=sys.stderr)
+                  rc = 1
+          print("已交叉验证 %d 个文件" % len(files))
+          sys.exit(rc)
+          PY
+
+  checks:
+    name: G1–G9
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: GLOSSARY.md 与 GLOSSARY.yaml 同步
+        run: python zh/tools/glossary_md.py --check
+      - name: python zh/tools/check.py --all
+        run: python zh/tools/check.py --all
+
+  progress:
+    name: PROGRESS.md 与 manifest 同步
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 重新生成并比对（忽略 generated_at）
+        run: |
+          cp zh/PROGRESS.md /tmp/PROGRESS.before
+          python zh/tools/progress.py
+          # generated_at 每次都会变，比对前先归一化
+          sed -i 's/^generated_at: .*/generated_at: <ignored>/' zh/PROGRESS.md
+          sed -i 's/^generated_at: .*/generated_at: <ignored>/' /tmp/PROGRESS.before
+          if ! diff -q /tmp/PROGRESS.before zh/PROGRESS.md > /dev/null; then
+            echo "zh/PROGRESS.md 与 manifest.json 不同步。请本地运行：" >&2
+            echo "    python zh/tools/progress.py" >&2
+            echo "并提交结果。" >&2
+            diff -u /tmp/PROGRESS.before zh/PROGRESS.md >&2
+            exit 1
+          fi
+          echo "PROGRESS.md 同步"
