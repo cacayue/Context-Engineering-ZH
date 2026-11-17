@@ -7,7 +7,7 @@
 | 任务卡 | 模块 | 篇 | 段 | 依赖 | 状态 |
 |---|---|---:|---:|---|---|
 | `M0_bootstrap.md` | M0 基础设施 | 0 | 0 | 无 | **ready** |
-| `M1_entry.md` | M1 入口层 | 23 | 40 | M0 | 待写 |
+| `M1_entry.md` | M1 入口层 | 23 | 40 | M0 | **ready** |
 | `M2_foundations.md` | M2 概念地基 | 7 | 11 | M0 | 待写 |
 | `M3_course_core.md` | M3 课程基础 | 27 | 79 | M0 | 待写 |
 | `M4_course_adv.md` | M4 课程进阶 | 17 | 35 | M0 | 待写 |
@@ -18,6 +18,13 @@
 | `M9_cognitive.md` | M9 认知架构 | 25 | 33 | M0 | 待写 |
 | `M10_research.md` | M10 研究篇 | 14 | 29 | M0 | 待写 |
 | `M11_write.md` | M11 空目录写作 | 4 | 0 | M0 | 待写 |
+
+启动文件（每模块一对，`LAUNCH_*.md` 是可直接粘贴给 agent 的短指令）：
+
+| 模块 | 任务卡（详规） | 启动指令（短） |
+|---|---|---|
+| M0 | `M0_bootstrap.md` | `LAUNCH_M0.md` |
+| M1 | `M1_entry.md` | `LAUNCH_M1.md` |
 
 ## 启动顺序
 
