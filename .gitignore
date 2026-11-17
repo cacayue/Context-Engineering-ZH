@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+
+# zh 中间产物
+zh/.chunks/
+zh/manifest.json.tmp
