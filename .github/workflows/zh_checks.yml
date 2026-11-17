@@ -19,6 +19,37 @@ permissions:
   contents: read
 
 jobs:
+  scope:
+    name: 分支与改动范围
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: 只允许 zh/ 与 zh_checks.yml 变更
+        run: |
+          # 中文内容只进 zh/main，且只动 zh/**。改到上游原文会让后续
+          # `git pull upstream main` 冲突，也让译文失去可对照的基准。
+          if [ "${GITHUB_REF_NAME}" != "zh/main" ]; then
+            echo "本工作流只在 zh/main 上运行（当前 ${GITHUB_REF_NAME}）" >&2
+            exit 1
+          fi
+          base=$(git rev-parse HEAD~1 2>/dev/null || echo "")
+          if [ -z "$base" ]; then
+            echo "首次提交，跳过范围检查"
+            exit 0
+          fi
+          changed=$(git diff --name-only "$base" HEAD)
+          echo "变更文件："; echo "$changed"
+          bad=$(echo "$changed" | grep -v -E '^(zh/|\.github/workflows/zh_checks\.yml$)' || true)
+          if [ -n "$bad" ]; then
+            echo "以下文件不在允许范围内（只允许 zh/** 与 zh_checks.yml）：" >&2
+            echo "$bad" >&2
+            exit 1
+          fi
+          echo "范围检查通过"
+
   manifest:
     name: manifest 一致性
     runs-on: ubuntu-latest
@@ -90,6 +121,8 @@ jobs:
           python-version: '3.12'
       - name: GLOSSARY.md 与 GLOSSARY.yaml 同步
         run: python zh/tools/glossary_md.py --check
+      - name: 文档数字与 manifest 一致
+        run: python zh/tools/digits.py
       - name: python zh/tools/check.py --all
         run: python zh/tools/check.py --all
 
