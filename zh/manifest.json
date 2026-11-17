@@ -1,13 +1,13 @@
 {
   "base_commit": "6158def",
-  "generated_at": "2026-11-17T08:09:03Z",
+  "generated_at": "2026-11-17T08:18:45Z",
   "chunk_bytes": 6144,
   "totals": {
     "files": 242,
     "chunks": 676,
-    "chunks_done": 130,
+    "chunks_done": 165,
     "authored": 30,
-    "published": 51
+    "published": 66
   },
   "files": [
     {
@@ -717,8 +717,11 @@
       "source_sha256": "82c7bd53fb4c655efd7c2e57d2e3df53aa4c8e13aaf51654d60956c8a782b18e",
       "todo_bytes": 7452,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -730,8 +733,12 @@
       "source_sha256": "123d7185c2569f9473273fa7971b2843f41d073b49f39bc29f6e8daac88e9e5d",
       "todo_bytes": 12858,
       "chunks": 3,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2,
+        3
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -743,8 +750,12 @@
       "source_sha256": "fba4ac74c434ac4125f46058c82d201bdd35a6314592bc69fa002eb5bd11e0b3",
       "todo_bytes": 13678,
       "chunks": 3,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2,
+        3
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -756,8 +767,12 @@
       "source_sha256": "e9d6dda5abda8466ffd0bb7a2f0768fc322ef2831b382a00b6294d792bca8ce7",
       "todo_bytes": 17305,
       "chunks": 3,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2,
+        3
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -769,8 +784,11 @@
       "source_sha256": "18f4f538757978efdc1f7190137ea3e2553cdc3313219a5d358e7723e69e2416",
       "todo_bytes": 7086,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -795,8 +813,11 @@
       "source_sha256": "afcfbf7ce2fc751b6d55a7815d347048132d818fb7357ed78da18e5f1b2dae8a",
       "todo_bytes": 10036,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -808,8 +829,11 @@
       "source_sha256": "5ac1437b4d18107cd356fa51538156c1924ff81d8c43184e352c00ab524941e9",
       "todo_bytes": 8722,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -821,8 +845,12 @@
       "source_sha256": "578de95b0a34a048c27e7d48559962d946414c9ceddb0c098fac048c3995eaa5",
       "todo_bytes": 13367,
       "chunks": 3,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2,
+        3
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -834,8 +862,12 @@
       "source_sha256": "24c78f9e66e24fbf3e27f2719f2f75eea71eefdada2ec522d7a22ea2bd74ff30",
       "todo_bytes": 15370,
       "chunks": 3,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2,
+        3
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -847,8 +879,11 @@
       "source_sha256": "1e36ae91375f54add11217e7025b6d900c3775b22d61a61bc1c8f6526fc58d18",
       "todo_bytes": 8521,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -860,8 +895,11 @@
       "source_sha256": "2ea35f316a49d938241529f3a905974a2113b8e945202034f1630e54c02b3d38",
       "todo_bytes": 9862,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -873,8 +911,11 @@
       "source_sha256": "22c16bd9aadb523b7113d027bb8e59d0b5c1d98a091c2d8ca22076be305c877f",
       "todo_bytes": 7471,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -886,8 +927,11 @@
       "source_sha256": "95b606f1723871d80607952821254debba72dad43566a21a5adebae26d952906",
       "todo_bytes": 10130,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -899,8 +943,11 @@
       "source_sha256": "995d42578b559a6e7d3ec7318c121fa1e000e2bfed4c0467ad5b7a769669a8df",
       "todo_bytes": 11650,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -912,8 +959,11 @@
       "source_sha256": "c4f23429a4abe808368809f1e66799f35a2571f325f4e42f132c2e18bf60e401",
       "todo_bytes": 11280,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
