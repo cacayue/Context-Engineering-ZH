@@ -1,13 +1,13 @@
 {
   "base_commit": "6158def",
-  "generated_at": "2026-11-17T07:02:02Z",
+  "generated_at": "2026-11-17T07:12:48Z",
   "chunk_bytes": 6144,
   "totals": {
     "files": 242,
     "chunks": 676,
-    "chunks_done": 40,
+    "chunks_done": 51,
     "authored": 30,
-    "published": 23
+    "published": 30
   },
   "files": [
     {
@@ -1088,8 +1088,10 @@
       "source_sha256": "d8d05ceaf3efc8b7de28f2ee88deab8bdd28f3357b69745669483c6eb7e2d82b",
       "todo_bytes": 3709,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1101,8 +1103,10 @@
       "source_sha256": "dc5e6c881b6e63ea8dbbaf44dadd18d7233d9a37b3bdc2e5acb6e0a180b85ab7",
       "todo_bytes": 3821,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1114,8 +1118,10 @@
       "source_sha256": "dabf0a515282bd84d6889aa180c121c2860b32cf8794a0fde49e12ba34acd039",
       "todo_bytes": 5514,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1127,8 +1133,11 @@
       "source_sha256": "33e09f94a490c8c6c0a2709a28af2a0d2ed28ea608afdc0ba53af807acd48ee6",
       "todo_bytes": 8124,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1140,8 +1149,11 @@
       "source_sha256": "9447185ed630033a6e6ba1631b3b268da4e81a090b4d77c72946c075a5a22abf",
       "todo_bytes": 8513,
       "chunks": 2,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1153,8 +1165,10 @@
       "source_sha256": "3e43e083696bd85e32e9289f5dd295db582ec6de968cd407a3a3795b9d38cc46",
       "todo_bytes": 4053,
       "chunks": 1,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1
+      ],
+      "status": "published",
       "authored": false
     },
     {
@@ -1166,8 +1180,12 @@
       "source_sha256": "6f494f6eee9e03aa950db75bd8dd563d393198d5f1d1e9ccd637a7c4a61e6303",
       "todo_bytes": 13633,
       "chunks": 3,
-      "chunks_done": [],
-      "status": "todo",
+      "chunks_done": [
+        1,
+        2,
+        3
+      ],
+      "status": "published",
       "authored": false
     },
     {
