@@ -20,20 +20,27 @@ rule: 奥卡姆剃刀 —— 能少则少，一个事实只存一处
 
 ### 0.2 什么算"正文"
 
-仓库 8.92 MB 中 **76.8% 是代码块与 ASCII 图**，真正的散文只占 23.2%。若把全部字节当"正文"，工作量高估 4 倍，且代码会被译坏。
+仓库 8.92 MB 中 **63.0% 是代码块与 ASCII 图**，需翻译的部分只占 **37.0%**。若把全部字节当"正文"，工作量高估 1.7 倍，且代码会被译坏。
 
-| 内容类型 | 实测体量 | 块数 | 处理 |
-|---|---:|---:|---|
-| 散文（段落、列表、引用、标题、表格） | **1.85 MB** | — | **全译** |
-| 无标记纯文本块（提示词、示例、对话） | **1.44 MB** | 1377 | **全译** |
-| 含框线 ASCII 图（无标记块） | 1.80 MB | 915 | **不译**，图下加中文图注 |
-| ```python``` | 2.99 MB | 870 | 不译；仅译注释中的自然语言 |
-| ```yaml``` / ```json``` | 0.41 MB | 211 | 不译；仅译 `description`/`title` 值 |
-| ```xml``` / ```javascript``` / ```bibtex``` | 0.19 MB | 49 | 不译 |
-| ```md```/```markdown```/```ascii```/```math```/```mermaid```/```bash```/```text``` | 0.24 MB | 173 | 按内容判定 |
-| `{{...}}` 占位符 | 60+ 处 | — | **原样保留** |
+| 内容类型 | 实测体量 | 占比 | 块数 | 处理 |
+|---|---:|---:|---:|---|
+| 散文（段落、列表、引用、标题、表格） | **1.86 MB** | 20.9% | — | **全译** |
+| 无标记纯文本块（提示词、示例、对话） | **1.44 MB** | 16.1% | 1377 | **全译** |
+| 含框线 ASCII 图（无标记块） | **1.79 MB** | 20.1% | 915 | **不译**，图下加中文图注 |
+| 围栏代码块（全部语言） | **3.83 MB** | 42.9% | 1303 | 不译；仅译注释中的自然语言 |
+| **合计** | **8.92 MB** | 100% | 3595 | 需译 3.30 MB |
 
-**需翻译总量 = 1.85 + 1.44 = 3.30 MB ≈ 36.1 万英文词 ≈ 57.7 万字中文**
+代码块内部：`python` 3.13 MB / 870 块（最大宗）、`yaml` 0.23 MB、`json` 0.20 MB、
+`xml` 0.13 MB、`markdown`+`md` 0.21 MB、`javascript` 0.06 MB、其余零散。
+
+`md`/`markdown` 标记的块多是嵌套的示例文档，按内容判定：含中文说明的译，
+纯代码或纯配置的留原文。
+
+`{{...}}` 占位符全仓 60+ 处（`{{task_description}}` 20、`{{reasoning_template}}` 10、
+`{{output_specifications}}` 10、`{{additional_questions_as_needed}}` 10、`{{problem}}` 9 等），
+一律**原样保留**，由 G4 检查。
+
+**需翻译总量 = 1.86 + 1.44 = 3.30 MB ≈ 36.1 万英文词 ≈ 57.7 万字中文**
 
 ### 0.3 30 个空文件是"写作"不是"翻译"
 
@@ -48,10 +55,10 @@ rule: 奥卡姆剃刀 —— 能少则少，一个事实只存一处
 | 项目 | 数值 |
 |---|---|
 | `.md` 文件 | 242（不含 `zh/`） |
-| `.md` 总字节 | 8.92 MB，其中代码块 5.63 MB（2218 块，63.2%） |
-| 散文 | 1.85 MB（20.8%） |
+| `.md` 总字节 | 8.92 MB，其中代码块与 ASCII 图 5.62 MB（2218 块，63.0%） |
+| 散文 | 1.86 MB（20.9%） |
 | 可译文本块 | 1.44 MB（1377 块） |
-| ASCII 图块 | 1.80 MB（915 块） |
+| ASCII 图块 | 1.79 MB（915 块） |
 | `.py` | 31 个 / 1.48 MB（仅译注释） |
 | `.json` + `.yaml` | 17 个 / 414 KB（仅译 description/title） |
 | `.mp4` | 3 个 / 36 MB（PODCASTS，只做摘要） |
@@ -62,7 +69,7 @@ rule: 奥卡姆剃刀 —— 能少则少，一个事实只存一处
 
 ```
 (无标记·纯文本)  1377 块 / 1.44 MB   → 译
-(无标记·含框线)   915 块 / 1.80 MB   → 不译，加图注
+(无标记·含框线)   915 块 / 1.79 MB   → 不译，加图注
 python            870 块 / 2.99 MB
 yaml              112 块 / 0.22 MB
 json               99 块 / 0.19 MB
@@ -195,14 +202,15 @@ cognitive-tools/cognitive-programs/basic-programs.md → ./program-examples.ipyn
 
 | ID | 任务 | 产出 | 验收 |
 |---|---|---|---|
-| M0-01 | 术语表 | `zh/GLOSSARY.yaml`（60–100 词） | 每条有 `en/zh/scope`，歧义词有 `ambiguity` |
+| M0-01 | 术语表 | `zh/GLOSSARY.yaml` + `zh/GLOSSARY.md` + `zh/tools/glossary_md.py` | 84 词；7 个歧义词有 `ambiguity`；MD 由 YAML 生成 |
 | M0-02 | 文风规范 | `zh/STYLE.md`（含 R1–R7） | 与第 5 节一致 |
-| M0-03 | 许可署名 | `zh/NOTICE` | 含 `davidkimai` 与 MIT 全文引用 |
+| M0-03 | 许可署名与导航 | `zh/NOTICE` + `zh/LEARNING_PATH.md` | NOTICE 含 `davidkimai` 与 MIT；LEARNING_PATH 收拢三套矛盾的阅读顺序 |
 | M0-04 | 扫描与清单 | `zh/tools/manifest.py` → `manifest.json` | 242 条，sha 全记录 |
-| M0-05 | 切分与装配 | `zh/tools/plan_chunks.py` `assemble.py` | 单文件往返无损 |
-| M0-06 | 九项检查 | `zh/tools/check.py`（G1–G9 合一） | 自测用例全过 |
-| M0-07 | 进度生成 | `zh/tools/progress.py` → `PROGRESS.md` | 与 manifest 一致 |
-| M0-08 | CI | `.github/workflows/zh_checks.yml` | `paths: ['zh/**']`，无 `paths-ignore` |
+| M0-05 | 切分与装配 | `zh/tools/plan_chunks.py` `assemble.py` | 单文件往返无损；锚点按深度自动生成 |
+| M0-06 | 九项检查 | `zh/tools/check.py`（G1–G9 合一） | 自测 9/9；G8 实际解析锚点路径 |
+| M0-07 | 进度生成 | `zh/tools/progress.py` → `PROGRESS.md` | 与 manifest 一致；M0 状态按交付物存在判定 |
+| M0-08 | 上游缺陷清单 | `zh/KNOWN_ISSUES.md` | 36 条失效链接，G5 白名单来源 |
+| M0-09 | CI | `.github/workflows/zh_checks.yml` | `paths: ['zh/**']`，无 `paths-ignore`，4 个 job |
 
 ### M1 入口层（40 段）
 
@@ -313,7 +321,7 @@ cognitive-tools/cognitive-programs/basic-programs.md → ./program-examples.ipyn
 | `zh/context-schemas/README.md` | `context-schemas/context_v*.json` |
 
 > 任务总数校验：M1–M11 共 **42** 个任务（M1 5 + M2 3 + M3 4 + M4 3 + M5 4 + M6 5 + M7 5 + M8 5 + M9 3 + M10 4 + M11 1）。
-> 加 M0 的 8 个基础设施任务 = 50，与 `zh/PROGRESS.md` 的「任务 0 / 42」口径区分：**进度只统计 M1–M11**。
+> 加 M0 的 9 个基础设施任务 = 51，与 `zh/PROGRESS.md` 的「任务 0 / 42」口径区分：**进度只统计 M1–M11**。
 
 ---
 
@@ -358,7 +366,7 @@ cognitive-tools/cognitive-programs/basic-programs.md → ./program-examples.ipyn
 |---|---|---|
 | R1 | `{{...}}` 原样，不译不改大小写 | 模板失效 |
 | R2 | ```python```/```yaml```/```json```/```xml``` 原样 | 示例不可运行 |
-| R3 | 含框线（`─│┌`）的无标记块原样 + 图注 | 914 块图错位 |
+| R3 | 含框线（`─│┌`）的无标记块原样 + 图注 | 915 块图错位 |
 | R4 | 标题层级数量与原文一致 | 无法判断是否漏译 |
 | R5 | 中文与拉丁字母/数字间加空格 | 排版不统一 |
 | R6 | 首次出现用「中文（English）」 | 术语无法追溯 |
@@ -652,7 +660,7 @@ M0 ──┬─▶ M1 ──▶ M2 ──┬─▶ M3 ──▶ M4 ──▶ M5
 
 | 风险 | 数据 | 对策 |
 |---|---|---|
-| ASCII 图错位 | 914 块 / 1.78 MB，占代码块 25%；M7 独占 585 KB | R3 硬规则 + G2 拦全角字符 |
+| ASCII 图错位 | 915 块 / 1.79 MB，占代码块 21%；M7 独占 587 KB | R3 硬规则 + G2 拦全角字符 |
 | 术语分叉 | M2 与 M8-01 讲同一套 Atoms→Organs；M6 的 `PROMPTS/` 与 `CLAUDE.md` 概念重叠 | 定 M2 为权威；M8 只译差异 + 交叉引用 |
 | 空文件虚高 | 30 篇 1 字节文件会虚增 12% 覆盖率 | `authored` 单列，不计入 coverage |
 

@@ -33,7 +33,7 @@ zh/PROGRESS.md     进度表，含 42 个任务的篇/段数（你的工具必�
 
 `PLAN.md` 是唯一规范来源。**本任务卡只补充它没写死的部分**（CLI 契约、JSON schema、模块映射算法）。两者冲突时以 `PLAN.md` 为准，并在报告里指出冲突。
 
-## 2. 交付物（9 件，缺一不算完成）
+## 2. 交付物（10 件，缺一不算完成）
 
 | # | 路径 | 内容 |
 |---|---|---|
@@ -45,16 +45,17 @@ zh/PROGRESS.md     进度表，含 42 个任务的篇/段数（你的工具必�
 | 6 | `zh/tools/assemble.py` | 合并 chunk → 单文件，往返无损 |
 | 7 | `zh/tools/check.py` | G1–G9 九项检查，单一入口 |
 | 8 | `zh/tools/progress.py` | 重写 `zh/PROGRESS.md` |
-| 9 | `.github/workflows/zh_checks.yml` | CI，仅监听 `zh/**` |
+| 9 | `zh/tools/glossary_md.py` | `GLOSSARY.yaml` → `GLOSSARY.md` 人读版 |
+| 10 | `.github/workflows/zh_checks.yml` | CI，仅监听 `zh/**` |
 
 ## 3. 关键数字（你的工具必须精确复现）
 
 ```
 源 .md 文件        242
 总段数             676    ← max(1, ceil(可译字节 / 6144)) 按文件累加
-可译字节总量       3.30 MB（散文 1.85 MB + 无标记纯文本块 1.44 MB）
+可译字节总量       3.30 MB（散文 1.86 MB + 无标记纯文本块 1.44 MB）
 不译的代码块       5.63 MB
-  其中含框线 ASCII 图  915 块 / 1.80 MB
+  其中含框线 ASCII 图  915 块 / 1.79 MB
   其中有语言标记      1303 块 / 3.83 MB（python 870 块 / 2.99 MB）
 围栏块总数         3595
 空文件（1 字节）    30     ← status: authored，不计入覆盖率
@@ -109,8 +110,8 @@ M7  13 篇   M8  32 篇   M9  25 篇   M10 14 篇   M11  4 篇
 模块内再细分。同样按序匹配。
 
 ```
-M1-01  根目录 7 个 .md
-M1-02  CLAUDE.md GEMINI.md
+M1-02  CLAUDE.md GEMINI.md          ← 必须先判，否则 CLAUDE/GEMINI 会被 M1-01 吃掉
+M1-01  根目录其余 .md（README/CITATIONS*/Complete_Guide）
 M1-03  STRUCTURE/**
 M1-04  masterclass_content/**
 M1-05  00_foundations/README.md 00_COURSE/README.md 30_examples/README.md
@@ -122,7 +123,7 @@ M6-01  20_templates/**       M6-02  60_protocols/**
 M6-03  10_guides_zero_to_hero/**  M6-04  30_examples/**（README 除外）
 M6-05  .claude/**
 M7-01  README 之外的 retrieval*/latent*      M7-02  *residue*/emergence*
-M7-03  *attractor*/field_mapping*            M7-04  patterns*/cognitive_patterns*/token_budgeting*
+M7-03  *attractor*/field_mapping*            M7-04  其余（patterns/cognitive_patterns/token_budgeting/eval_checklist）
 M7-05  README.md 及 *schema*
 M8-01  NOCODE/00_foundations/**    M8-02  NOCODE/10_mental_models/**
 M8-03  NOCODE/20_practical_protocols/**
@@ -365,7 +366,7 @@ python zh/tools/progress.py            # 读 manifest.json，重写 zh/PROGRESS.
 python zh/tools/progress.py --stdout   # 不写文件，只打印
 ```
 
-必须**逐字保持** `zh/PROGRESS.md` 现有的 13 个章节结构与表格列，只替换数字与状态。当前文件是手写的样板，你的脚本要能生成与它结构相同的结果（数值当前全为 0）。
+必须**逐字保持** `zh/PROGRESS.md` 现有的结构（1 个 H1 + 7 个 H2 + 6 个表格），只替换数字与状态。当前文件是手写的样板，你的脚本要能生成与它结构相同的结果（数值当前全为 0）。
 
 `zh/PROGRESS.md` front matter 的 `generated_at` 更新为当前时间。
 
@@ -513,3 +514,15 @@ check --all: 无 crash
 
 正确实现见 §6 第 0 步。用 `zh/manifest.json` 的 `totals.chunks == 676` 做验收即可——
 算错一个文件，总数就变。
+
+朴素实现的实际偏差（已实测，不是理论值）：
+
+| 错误实现 | 得到的段数 |
+|---|---:|
+| 只认 ```，不认 `~~~` | 1076 |
+| art 块整块扣除（含围栏行） | 675 |
+| code 块只扣块体、不扣围栏行 | 669 |
+| 未闭合围栏跳过不算 | 707 |
+| **正确：code 扣整块 + art 只扣块体** | **676** |
+
+676 是唯一自洽的口径，不是"约等于"。
