@@ -24,11 +24,13 @@
   zh: 上下文
   forbid: [语境, 情景, 脉络, 上下文环境]
   scope: doc
+  note: forbid 只约束把 context 本身译成上列词；scenario 的规范译法是「场景」，见 scenario 条。episodic memory 译「情景记忆」属固定术语，G1 先遮蔽规范译法，故不会被本条的 forbid 误伤
 
-- en: context window
-  zh: 上下文窗口
-  forbid: [上下文视窗, 语境窗口]
+- en: scenario
+  zh: 场景
+  forbid: [情景]
   scope: doc
+  note: 与 context 的 forbid 中的「情景」区隔：scenario 一律「场景」（情景规划→场景规划、情景构建→场景构建）。「情形」（situation）是通用词，不归本条管辖
 
 - en: context management
   zh: 上下文管理
@@ -219,10 +221,22 @@
   zh: 编排
   forbid: [协奏, 管弦]
   scope: doc
+  note: forbid 只约束把 orchestration 本身译成「管弦/协奏」；音乐比喻词见 orchestra / concerto 两条
 
 - en: orchestrator
   zh: 编排器
   scope: doc
+
+- en: orchestra
+  zh: 交响乐团
+  forbid: [管弦乐队, 管弦乐团]
+  scope: doc
+  note: 音乐比喻（如「把编排想象成指挥交响乐团」）统一译「交响乐团」；不得译「管弦乐队」，以免与 orchestration 的 forbid 混淆
+
+- en: concerto
+  zh: 协奏曲
+  scope: doc
+  note: 协奏曲是合法音乐术语。G1 先遮蔽规范译法再查 forbid，因此「协奏曲」不会被 orchestration 的 forbid「协奏」误伤；正文不要用「交响曲」替代 concerto（那是 symphony）
 
 - en: protocol
   zh: 协议
@@ -254,6 +268,7 @@
   zh: 共振
   forbid: [共鸣, 谐振]
   scope: doc
+  note: 物理与场论语境一律「共振」；音乐比喻（如「共鸣腔」「情感共鸣」）若确为 resounding/resonance 的隐喻义，可在正文保留「共鸣」并在报告中标注，或改写为「共振」以避免 G1 FAIL
 
 - en: resonance scaffold
   zh: 共振支架

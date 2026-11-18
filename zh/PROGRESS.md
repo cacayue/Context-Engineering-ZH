@@ -3,7 +3,7 @@ title: 中文化进度表
 status: active
 version: v1.0
 generated_by: zh/tools/progress.py
-generated_at: 2026-11-18T10:54:06Z
+generated_at: 2026-11-18T11:17:08Z
 created: 2026-11-17
 base_commit: 6158def
 rule: 本文件由脚本生成，禁止手改；手改后与 manifest.json 脱节即失效

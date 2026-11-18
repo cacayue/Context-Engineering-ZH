@@ -3,7 +3,7 @@ title: 术语表
 status: active
 generated_by: zh/tools/glossary_md.py
 source: zh/GLOSSARY.yaml
-terms: 84
+terms: 86
 rule: 本文件由脚本生成，禁止手改；改 zh/GLOSSARY.yaml 后重跑
 ---
 
@@ -12,15 +12,15 @@ rule: 本文件由脚本生成，禁止手改；改 zh/GLOSSARY.yaml 后重跑
 > 唯一真相是 [`GLOSSARY.yaml`](GLOSSARY.yaml)，本页是它的只读投影。
 > 机器（CI 的 G1 检查、翻译 agent）读 YAML；人读本页。
 >
-> 共 **84** 条。带「歧义」标记的词有多个译法，按语境选择。
+> 共 **86** 条。带「歧义」标记的词有多个译法，按语境选择。
 
 ## 速查
 
 | 英文 | 中文 | 说明 |
 |---|---|---|
 | Context Engineering | **上下文工程** | 全书标题级术语，不得译为「提示工程」 |
-| context | **上下文** |  |
-| context window | **上下文窗口** |  |
+| context | **上下文** | forbid 只约束把 context 本身译成上列词；scenario 的规范译法是「场景」，见 scenario 条。episodic memory 译「情景记忆」属固定术语，G1 先遮蔽规范译法，故不会被本条的 forbid 误伤 |
+| scenario | **场景** | 与 context 的 forbid 中的「情景」区隔：scenario 一律「场景」（情景规划→场景规划、情景构建→场景构建）。「情形」（situation）是通用词，不归本条管辖 |
 | context management | **上下文管理** |  |
 | context processing | **上下文处理** |  |
 | context assembly | **上下文装配** |  |
@@ -55,12 +55,14 @@ rule: 本文件由脚本生成，禁止手改；改 zh/GLOSSARY.yaml 后重跑
 | agentic | **智能体式的** |  |
 | tool use | **工具使用** |  |
 | function calling | **函数调用** |  |
-| orchestration | **编排** |  |
+| orchestration | **编排** | forbid 只约束把 orchestration 本身译成「管弦/协奏」；音乐比喻词见 orchestra / concerto 两条 |
 | orchestrator | **编排器** |  |
+| orchestra | **交响乐团** | 音乐比喻（如「把编排想象成指挥交响乐团」）统一译「交响乐团」；不得译「管弦乐队」，以免与 orchestration 的 forbid 混淆 |
+| concerto | **协奏曲** | 协奏曲是合法音乐术语。G1 先遮蔽规范译法再查 forbid，因此「协奏曲」不会被 orchestration 的 forbid「协奏」误伤；正文不要用「交响曲」替代 concerto（那是 symphony） |
 | protocol | **协议** | ⚠ 两者中文同形，按上下文补限定语（「协议壳」「通信协议」）区分 |
 | shell | **协议壳** | ⚠ 命令、代码、CLI 语境保留 shell 原词 |
 | schema field | **字段** |  |
-| resonance | **共振** |  |
+| resonance | **共振** | 物理与场论语境一律「共振」；音乐比喻（如「共鸣腔」「情感共鸣」）若确为 resounding/resonance 的隐喻义，可在正文保留「共鸣」并在报告中标注，或改写为「共振」以避免 G1 FAIL |
 | resonance scaffold | **共振支架** |  |
 | field | **场** | ⚠ M2 与 M10 统一用「场」；配置与 schema 内保留 field |
 | semantic field | **语义场** |  |
@@ -116,10 +118,12 @@ rule: 本文件由脚本生成，禁止手改；改 zh/GLOSSARY.yaml 后重跑
 ### context → 上下文
 
 - **禁用译法**：`语境`、`情景`、`脉络`、`上下文环境`
+- **说明**：forbid 只约束把 context 本身译成上列词；scenario 的规范译法是「场景」，见 scenario 条。episodic memory 译「情景记忆」属固定术语，G1 先遮蔽规范译法，故不会被本条的 forbid 误伤
 
-### context window → 上下文窗口
+### scenario → 场景
 
-- **禁用译法**：`上下文视窗`、`语境窗口`
+- **禁用译法**：`情景`
+- **说明**：与 context 的 forbid 中的「情景」区隔：scenario 一律「场景」（情景规划→场景规划、情景构建→场景构建）。「情形」（situation）是通用词，不归本条管辖
 
 ### context management → 上下文管理
 
@@ -282,9 +286,19 @@ Atoms → Molecules → Cells → Organs 的层级隐喻，以及记忆系统的
 ### orchestration → 编排
 
 - **禁用译法**：`协奏`、`管弦`
+- **说明**：forbid 只约束把 orchestration 本身译成「管弦/协奏」；音乐比喻词见 orchestra / concerto 两条
 
 ### orchestrator → 编排器
 
+
+### orchestra → 交响乐团
+
+- **禁用译法**：`管弦乐队`、`管弦乐团`
+- **说明**：音乐比喻（如「把编排想象成指挥交响乐团」）统一译「交响乐团」；不得译「管弦乐队」，以免与 orchestration 的 forbid 混淆
+
+### concerto → 协奏曲
+
+- **说明**：协奏曲是合法音乐术语。G1 先遮蔽规范译法再查 forbid，因此「协奏曲」不会被 orchestration 的 forbid「协奏」误伤；正文不要用「交响曲」替代 concerto（那是 symphony）
 
 ### protocol → 协议
 
@@ -316,6 +330,7 @@ Atoms → Molecules → Cells → Organs 的层级隐喻，以及记忆系统的
 ### resonance → 共振
 
 - **禁用译法**：`共鸣`、`谐振`
+- **说明**：物理与场论语境一律「共振」；音乐比喻（如「共鸣腔」「情感共鸣」）若确为 resounding/resonance 的隐喻义，可在正文保留「共鸣」并在报告中标注，或改写为「共振」以避免 G1 FAIL
 
 ### resonance scaffold → 共振支架
 
