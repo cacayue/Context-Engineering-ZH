@@ -111,21 +111,34 @@ def load_manifest(path=MANIFEST):
 
 
 def aggregate(data):
-    """按模块 / 任务聚合 篇 段 空 完成段 状态。"""
-    per_mod = {m: {"files": 0, "chunks": 0, "empty": 0, "done": 0, "statuses": {}} for m in zmap.MODULES}
+    """按模块 / 任务聚合 篇 段 空 完成段 状态。
+
+    除段数外，额外统计 `authored_done`：`authored` 空文件（无原文可译）的
+    中文导读已写到 `target` 的篇数。导读不计入覆盖率，但它是该文件的交付物，
+    用于判定任务/模块是否完成，否则全 authored 的任务会永远停在 `todo`。
+    """
+    per_mod = {
+        m: {"files": 0, "chunks": 0, "empty": 0, "done": 0, "authored_done": 0, "statuses": {}}
+        for m in zmap.MODULES
+    }
     per_task = {
-        t: {"files": 0, "chunks": 0, "empty": 0, "done": 0, "statuses": {}}
+        t: {"files": 0, "chunks": 0, "empty": 0, "done": 0, "authored_done": 0, "statuses": {}}
         for t in zmap.TASK_NAMES
     }
     for e in data["files"]:
         done = len(e.get("chunks_done") or [])
+        authored = bool(e.get("authored"))
+        tgt = os.path.join(REPO, e.get("target") or "")
+        guide_written = authored and bool(e.get("target")) and os.path.isfile(tgt)
         for bucket in (per_mod.get(e["module"]), per_task.get(e["task"])):
             if bucket is None:
                 continue
             bucket["files"] += 1
             bucket["chunks"] += e["chunks"]
-            bucket["empty"] += 1 if e.get("authored") else 0
+            bucket["empty"] += 1 if authored else 0
             bucket["done"] += done
+            if guide_written:
+                bucket["authored_done"] += 1
             st = e.get("status") or "todo"
             bucket["statuses"][st] = bucket["statuses"].get(st, 0) + 1
     return per_mod, per_task
@@ -134,23 +147,39 @@ def aggregate(data):
 def rollup_status(bucket):
     """模块/任务的汇总状态（与 §4 状态机一致）。
 
-    规则：全部 published → published；一段未动且无发布 → todo；
+    规则：全部已交付 → published；什么都没动 → todo；
     段已译完但未全发布 → review 或 draft；其余 → draft。
-    `authored`（无原文）不计入完成，所以全 authored 的任务仍是 todo。
+
+    「已交付」= 译文 `published`，或 `authored` 空文件的导读已写到 target。
+    后者不计入覆盖率（无原文可译），但它确实是该文件的交付物，
+    故参与本状态机判定，避免全 authored 的任务永远停在 `todo`。
     """
     st = bucket["statuses"]
     files = sum(st.values())
     pub = st.get("published", 0)
     rev = st.get("review", 0)
+    authored_done = bucket.get("authored_done", 0)
     if st.get("sync-needed"):
         return "sync-needed"
-    if files and pub == files:
+    if files and (pub + authored_done) >= files:
         return "published"
-    if bucket["done"] == 0 and pub == 0:
+    if bucket["done"] == 0 and pub == 0 and authored_done == 0:
         return "todo"
     if bucket["chunks"] and bucket["done"] >= bucket["chunks"]:
         return "review" if rev else "published"
     return "draft"
+
+
+def bucket_complete(bucket):
+    """任务/模块是否已交付（用于 §0 的「模块完成 / 任务完成」计数）。
+
+    有原文可译的：段全部完成即可；无原文（chunks == 0）的：全部导读已写出。
+    """
+    if bucket["files"] <= 0:
+        return False
+    if bucket["chunks"] > 0:
+        return bucket["done"] >= bucket["chunks"]
+    return bucket.get("authored_done", 0) >= bucket["files"]
 
 
 def pct(done, total):
@@ -165,10 +194,8 @@ def overall(data, per_mod, per_task):
     authored = data["totals"]["authored"]
     done = data["totals"]["chunks_done"]
     published = data["totals"]["published"]
-    mods_done = sum(1 for m in zmap.MODULES if per_mod[m]["done"] >= per_mod[m]["chunks"] and per_mod[m]["chunks"] > 0)
-    tasks_done = sum(
-        1 for t, b in per_task.items() if b["chunks"] > 0 and b["done"] >= b["chunks"]
-    )
+    mods_done = sum(1 for m in zmap.MODULES if bucket_complete(per_mod[m]))
+    tasks_done = sum(1 for t, b in per_task.items() if bucket_complete(b))
     return {
         "files": files,
         "chunks": chunks,
@@ -237,8 +264,14 @@ def render(data, per_mod, per_task, prev_history=None):
     L.append("| 已完成段 | **%d** | %d |" % (ov["done"], ov["chunks"]))
     L.append("| 覆盖率 | **%.1f%%** | 100%% |" % ov["coverage"])
     L.append("| 已发布文件 | %d | %d |" % (ov["published"], ov["writable"]))
-    L.append("| 待写作（`authored`） | %d | %d |" % (
-        sum(1 for e in data["files"] if e.get("authored") and e.get("status") == "published"),
+    L.append("| 导读已写（`authored`） | %d | %d |" % (
+        sum(
+            1
+            for e in data["files"]
+            if e.get("authored")
+            and e.get("target")
+            and os.path.isfile(os.path.join(REPO, e["target"]))
+        ),
         ov["authored"],
     ))
     L.append("| 模块完成 | %d / %d | %d / %d |" % (ov["mods_done"], ov["mods_total"], ov["mods_total"], ov["mods_total"]))
@@ -297,7 +330,7 @@ def render(data, per_mod, per_task, prev_history=None):
                 b["chunks"],
                 b["empty"],
                 b["done"],
-                pct(b["done"], b["chunks"]),
+                pct(b["done"], b["chunks"]) if b["chunks"] else "—",
                 rollup_status(b),
             )
         )
