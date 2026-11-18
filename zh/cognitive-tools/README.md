@@ -121,10 +121,10 @@ cognitive-tools/
 
 研究表明，用认知工具组织推理能够显著提升模型性能：
 
-- **性能**: Up to 16.6% improvement on mathematical reasoning benchmarks
-- **可靠性**: Significant reduction in reasoning errors and hallucinations
-- **效率**: Better results with fewer total tokens
-- **灵活性**: Applicable across domains from mathematics to creative writing
+- **性能**：在数学推理基准测试中提升高达 16.6%
+- **可靠性**：显著减少推理错误与幻觉
+- **效率**：用更少的总词元获得更佳的结果
+- **灵活性**：适用于从数学到创意写作的各个领域
 
 ## 快速入门
 
@@ -153,19 +153,19 @@ print(solution.answer)  # View final answer
 
 ## 目录结构
 
-- `cognitive-templates/`: Reusable templates for different reasoning operations
-- `cognitive-programs/`: Structured prompt programs with code-like patterns
-- `cognitive-schemas/`: Knowledge representation formats for different domains
-- `cognitive-architectures/`: Complete reasoning systems combining multiple tools
-- `integration/`: Guides for integrating with other components (RAG, memory, etc.)
+- `cognitive-templates/`：用于不同推理操作的可复用模板
+- `cognitive-programs/`：具有类代码模式的结构化提示词程序
+- `cognitive-schemas/`：面向不同领域的知识表示格式
+- `cognitive-architectures/`：结合多种工具的完整推理系统
+- `integration/`：与其他组件（RAG、记忆等）集成的指南
 
 ## 学习路径
 
-1. **Start with templates**: Learn the basic cognitive operations
-2. **Explore programs**: See how operations can be combined into reasoning flows
-3. **Study schemas**: Understand how to structure knowledge effectively
-4. **Master architectures**: Build complete reasoning systems
-5. **Integrate components**: Combine with RAG, memory, and other context engineering components
+1. **从模板开始**：学习基础认知操作
+2. **探索程序**：了解如何将操作组合为推理流程
+3. **研究模式（Schemas）**：理解如何有效组织知识结构
+4. **掌握架构**：构建完整的推理系统
+5. **集成组件**：与 RAG、记忆及其他上下文工程组件结合
 
 ## 衡量效果
 
@@ -196,6 +196,6 @@ print(f"Cognitive tool improved performance by {improvement:.1f}%")
 
 ## 下一步
 
-- See [understanding.md](./cognitive-templates/understanding.md) for basic comprehension tools
-- Try [basic-programs.md](./cognitive-programs/basic-programs.md) for fundamental program structures
-- Explore [solver-architecture.md](./cognitive-architectures/solver-architecture.md) for a complete problem-solving system
+- 查看 [understanding.md](./cognitive-templates/understanding.md) 了解基础理解工具
+- 尝试 [basic-programs.md](./cognitive-programs/basic-programs.md) 了解基础程序结构
+- 探索 [solver-architecture.md](./cognitive-architectures/solver-architecture.md) 了解完整的解题系统

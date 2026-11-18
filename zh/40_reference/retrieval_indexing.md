@@ -17,8 +17,9 @@ source_sha256: deb8105bb415102bd3c26a8ee8eafcaa641552d2f0bff0592c6e5410d4760eb5
 > **—诺伯特·维纳**
 
 
-## Introduction: The Foundation of 上下文 Augmentation
-检索 索引 forms the cornerstone of 上下文工程 that extends beyond the boundaries of a model's inherent knowledge. By creating, organizing, and efficiently accessing external knowledge stores, 检索 索引 enables models to ground their responses in specific information while maintaining the semantic coherence of the broader 上下文 场.
+## 引言：上下文增强的基石
+
+检索索引构成了上下文工程的基石，它超越了模型固有知识的边界。通过创建、组织和高效访问外部知识库，检索索引使模型能够将其回答建立在具体信息之上，同时保持更广泛上下文场的语义连贯性。
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -75,9 +76,9 @@ source_sha256: deb8105bb415102bd3c26a8ee8eafcaa641552d2f0bff0592c6e5410d4760eb5
 5. **评估和优化**：衡量和提高搜索性能
 6. **高级技术**：探索混合搜索、稀疏-密集组合和多阶段搜索等前沿方法
 
-Let's begin with the fundamental concepts that underpin effective 检索 索引 in 上下文工程.
+让我们从支撑上下文工程中有效检索索引的基础概念开始。
 
-## 1. Foundational Principles of 检索 索引
+## 1. 检索索引的基础原则
 
 搜索索引的核心在于以一种能够实现高效且相关的访问的方式组织知识。这涉及到几个关键原则：
 
@@ -144,57 +145,57 @@ Let's begin with the fundamental concepts that underpin effective 检索 索引 
    - **多向量表示**：每个文档使用多个向量
    - **结构嵌入**：保留层次或关系信息
 
-### 1.2 片段切分: The Art of Segmentation
+### 1.2 片段切分：切分的艺术
 
-分段切分策略显着影响搜索效果。我们划分信息的方式决定了可以检索哪些上下文单元。
+片段切分策略显著影响检索效果。我们划分信息的方式决定了可以检索哪些上下文单元。
 
-#### 片段切分 Strategies:
+#### 片段切分策略：
 
-1. **基于尺寸的碎片切分**
+1. **基于大小的片段切分**
    - 固定词元/字符长度
-   - 优点：简单、可预测的尺寸
+   - 优点：简单、可预测的大小
    - 缺点：可能会破坏语义单元
 
 2. **基于语义的片段切分**
    - 段落、章节或主题边界
-   - 优点：保留意义单位
-   - 缺点：尺寸可变可能难以管理
+   - 优点：保留意义单元
+   - 缺点：大小可变，可能难以管理
 
-3. **混合碎片切分**
+3. **混合片段切分**
    - 具有大小限制的语义边界
-   - 优点：意义和可管理性之间的平衡
+   - 优点：在语义与可管理性之间取得平衡
    - 缺点：实施更复杂
 
-4. **分层分割切分**
-   - 嵌套段（章节内的段落）
-   - 优点：多粒度搜索选项
+4. **分层片段切分**
+   - 嵌套片段（如章节内的段落）
+   - 优点：多粒度检索选项
    - 缺点：复杂性和存储要求增加
 
-### 1.3 索引 Structure: Organizing for 检索
+### 1.3 索引结构：面向检索的组织
 
-索引结构决定了如何组织编码知识以进行有效的搜索和检索。
+索引结构决定了如何组织编码知识以进行高效的搜索和检索。
 
-#### Common 索引 Structures:
+#### 常见的索引结构：
 
-1. **平坦指数**
+1. **扁平索引（Flat Index）**
    - 单个可搜索空间中的所有向量
-   - 优点：简单，适用于较小的集合
+   - 优点：简单，适用于较小规模的集合
    - 缺点：搜索时间与集合大小呈线性关系
 
 2. **基于树的索引**
-   - 分层组织（例如，KD 树、VP 树）
-   - 优点：对数搜索时间
-   - 缺点：更新可能很昂贵，结果是近似的
+   - 分层组织（例如 KD 树、VP 树）
+   - 优点：对数级搜索时间
+   - 缺点：更新开销可能较高，结果为近似值
 
 3. **基于图的索引**
-   - 相似项目的互联网络（例如，HNSW）
-   - 优点：快速近似搜索，很好地处理高维
-   - 缺点：更复杂，记忆力更强
+   - 相似项目的互联网络（例如 HNSW）
+   - 优点：快速近似搜索，很好地支持高维数据
+   - 缺点：更复杂，资源开销更高
 
-4. **基于量化的指数**
+4. **基于量化的索引**
    - 压缩向量表示（例如 PQ、ScaNN）
-   - 优点：记忆效率高，搜索速度更快
-   - 缺点：轻微的准确性权衡
+   - 优点：存储开销低，搜索速度更快
+   - 缺点：存在轻微的精度折损
 
 ### 1.4 查询转换：桥接意图和内容
 
@@ -226,22 +227,22 @@ Let's begin with the fundamental concepts that underpin effective 检索 索引 
 
 **第 1 步：** 与您的 AI 助手开始新的聊天。
 
-**Step 2:** Copy and paste this 提示词:
+**第 2 步：** 复制并粘贴此提示词：
 
-"I'm learning about 检索 索引 for 上下文工程. Let's explore the foundational principles together.
+"我正在学习上下文工程中的检索索引技术。让我们一起探讨基础原则。
 
 1. 如果我有一组技术文档（大约 1,000 页），您会推荐哪种表示方法？为什么？<a id="chunk-2"></a>
-2. What 片段切分 strategy would work best for this technical documentation, considering I need to preserve 上下文 about complex procedures?
+2. 考虑到我需要保留复杂流程的上下文，针对此类技术文档哪种片段切分策略效果最好？
 
 3. 考虑到这种规模的文档，什么样的索引结构可以提供搜索速度和准确性的最佳平衡？
 
 4. 我们如何转换通常被表述为故障排除问题的用户查询，以更好地匹配文档中的指导内容？
 
-让我们讨论每个方面，为我的搜索系统打下坚实的基础。”
+让我们讨论每个方面，为我的检索系统打下坚实的基础。"
 
 ## 2. 索引架构：设计有效的知识库
 
-创建有效的知识存储需要仔细的架构决策，以平衡性能、准确性和可维护性。让我们探讨一下 Index 架构的关键组件：
+创建有效的知识存储需要仔细的架构决策，以平衡性能、准确性和可维护性。让我们探讨一下索引架构的关键组件：
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -615,11 +616,11 @@ Let's begin with the fundamental concepts that underpin effective 检索 索引 
    - 优点：捕获向量空间中缺失的结构关系
    - 缺点：需要知识图谱构建和维护
 
-### ✏️ Exercise 3: Selecting 检索 Mechanisms
+### ✏️ 练习 3：选择检索机制
 
 **第 1 步：** 继续练习 2 中的对话或开始新的聊天。
 
-**Step 2:** Copy and paste this 提示词:<a id="chunk-4"></a>
+**第 2 步：** 复制并粘贴此提示词：<a id="chunk-4"></a>
 “让我们为我们的技术文档系统选择最佳的检索机制。我想评估不同的方法：
 
 1. **搜索目标分析**：
@@ -781,7 +782,7 @@ Let's begin with the fundamental concepts that underpin effective 检索 索引 
 
 # 4. 语义整合：合并检索到的内容
 
-## 4.4 提示词 Engineering for 检索
+## 4.4 面向检索的提示词工程
 
 有效的提示词工程是检索信息和模型响应之间的桥梁。它指导模型如何在推理过程中解释、优先考虑和利用检索到的上下文。
 
@@ -1158,11 +1159,11 @@ After your answer, suggest 2-3 related questions the user might want to ask. If 
 > 图：检索索引的结构与流程 —— Retrieval Indexing
 
 
-### ✏️ Exercise 4: Crafting 检索 提示词
+### ✏️ 练习 4：构建检索提示词
 
 **第 1 步：** 继续练习 3 中的对话或开始新的聊天。
 
-**Step 2:** Copy and paste this 提示词:
+**第 2 步：** 复制并粘贴此提示词：
 
 “让我们为我们的技术文档系统创建一个完整的检索提示词模板。我们需要设计提示词的每个组成部分以确保检索到的信息的有效使用：
 
@@ -1490,7 +1491,7 @@ if __name__ == "__main__":
    - 我们如何随着时间的推移迭代地改进系统？
 
 让我们制定一个符合我们技术能力和项目要求的全面实施计划。”<a id="chunk-8"></a>
-## 6. 评估 and Optimization
+## 6. 评估与优化
 
 一旦实施，搜索系统需要持续评估和优化，以确保其继续有效地满足用户需求。
 
@@ -1703,11 +1704,11 @@ if __name__ == "__main__":
 > 图：检索索引的结构与流程 —— Retrieval Indexing
 
 
-### 6.2.1 片段切分 Optimization
+### 6.2.1 片段切分优化
 
-碎片切分通常是第一个优化的地方，因为它从根本上影响可以检索的信息。
+片段切分通常是第一个优化的地方，因为它从根本上影响可以检索的信息。
 
-#### The 片段切分 Optimization 协议
+#### 片段切分优化协议
 
 ```
 /retrieval.optimize.chunking{
@@ -1768,7 +1769,7 @@ if __name__ == "__main__":
 > 图：检索索引的结构与流程 —— Retrieval Indexing
 
 
-#### Visual Concept: The 片段切分 Spectrum
+#### 视觉概念：片段切分谱系
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -1794,9 +1795,9 @@ if __name__ == "__main__":
 > 图：检索索引的结构与流程 —— Retrieval Indexing
 
 
-#### Practical Implementation: Semantic 片段切分
+#### 实际实现：语义片段切分
 
-这是语义分割切分的简化方法，即使是非技术读者也可以理解：<a id="chunk-9"></a>
+这是语义片段切分的简化方法，即使是非技术读者也可以理解：<a id="chunk-9"></a>
 
 ```python
 # Simple semantic chunking implementation
@@ -1872,7 +1873,7 @@ def split_by_headings(text):
     return sections
 ```
 
-#### No-Code Approach: Rule-Based 片段切分 Strategies
+#### 无代码方法：基于规则的片段切分策略
 
 对于那些喜欢无代码方法的人，这里有一个使用现有工具的策略：
 
@@ -1907,11 +1908,11 @@ def split_by_headings(text):
 > 图：检索索引的结构与流程 —— Retrieval Indexing
 
 
-### 6.2.2 嵌入 Optimization
+### 6.2.2 嵌入优化
 
-嵌入式质量直接影响您的系统匹配查询和文档之间语义的能力。
+嵌入质量直接影响系统在查询和文档之间进行精确语义匹配的能力。
 
-#### The 嵌入 Optimization 协议
+#### 嵌入优化协议
 
 ```
 /retrieval.optimize.embedding{
@@ -2109,11 +2110,11 @@ def adapt_embedding_model(base_model_name, domain_texts, domain_queries=None, ep
 > 图：检索索引的结构与流程 —— Retrieval Indexing
 
 
-### 6.2.3 检索 Algorithm Optimization
+### 6.2.3 检索算法优化
 
-搜索机制本身可以进行优化，以提高准确性和性能。
+检索机制本身可以进行优化，以提高准确性和性能。
 
-#### The 检索 Optimization 协议
+#### 检索优化协议
 
 ```
 /retrieval.optimize.algorithm{
@@ -2221,7 +2222,7 @@ def adapt_embedding_model(base_model_name, domain_texts, domain_queries=None, ep
 > 图：检索索引的结构与流程 —— Retrieval Indexing
 
 
-#### Practical Implementation: Hybrid 检索
+#### 实际实现：混合检索
 
 以下是结合向量和关键字搜索的混合检索的简化实现：
 
@@ -2364,7 +2365,7 @@ def hybrid_retrieve(query, documents, embeddings, embedding_model, top_k=5, alph
 
 # 7. 先进技术和未来方向
 
-## 7.1 Adaptive 嵌入
+## 7.1 自适应嵌入
 
 自适应嵌入代表了超越静态向量表示的重大演变。这些嵌入不是在训练后保持固定，而是根据用户交互、反馈和不断变化的信息需求不断学习和改进。
 
@@ -2408,7 +2409,7 @@ def hybrid_retrieve(query, documents, embeddings, embedding_model, top_k=5, alph
 > 图：检索索引的结构与流程 —— Retrieval Indexing
 
 
-### The Adaptive 嵌入 协议
+### 自适应嵌入协议
 
 ```
 /retrieval.adaptive_embeddings{
@@ -2705,11 +2706,11 @@ Let's see how adaptive 嵌入 could benefit a technical documentation 检索 sys
 > 图：检索索引的结构与流程 —— Retrieval Indexing
 
 
-### ✏️ Exercise 7: Adaptive 嵌入 Strategy
+### ✏️ 练习 7：自适应嵌入策略
 
 **第 1 步：** 继续练习 6 中的对话或开始新的聊天。
 
-**Step 2:** Copy and paste this 提示词:
+**第 2 步：** 复制并粘贴此提示词：
 
 “让我们为我们的技术文档检索系统设计一个自适应嵌入策略。我想确保我们的嵌入随着我们的产品和文档的发展而保持有效：
 
@@ -2735,7 +2736,7 @@ Let's see how adaptive 嵌入 could benefit a technical documentation 检索 sys
 
 让我们制定一个实施自适应嵌入的全面计划，这将使我们的技术文档检索系统随着时间的推移保持有效。”
 
-## 7.2 Active 检索
+## 7.2 主动检索
 
 主动搜索代表了从被动信息搜索到主动信息搜索的范式转变，其中搜索系统在信息收集过程中占据主动。
 
@@ -2779,7 +2780,7 @@ Let's see how adaptive 嵌入 could benefit a technical documentation 检索 sys
 > 图：检索索引的结构与流程 —— Retrieval Indexing
 
 
-### The Active 检索 协议
+### 主动检索协议
 
 ```
 /retrieval.active{
@@ -2874,7 +2875,7 @@ Let's see how adaptive 嵌入 could benefit a technical documentation 检索 sys
 ```
 > 图：检索索引的结构与流程 —— Retrieval Indexing
 
-### Visual Concept: ReAct 模式 for Active 检索
+### 视觉概念：主动检索的 ReAct 模式
 
 ReAct 模式（推理 + 行动）是主动搜索的一种强大方法：
 
@@ -3199,7 +3200,7 @@ class SelfAskRetrieval:
 3. **上下文原则**：技术方案取决于具体的环境条件和要求
 4. **先决原则**：技术知识建立在可能需要单独检索的基础概念之上
 
-## Active 检索 Design Framework
+## 主动检索设计框架
 
 让我们为适合技术文档的主动搜索系统创建一个全面的设计：
 
